@@ -56,5 +56,5 @@ jobs:
         with:
           app-name: 'LunarisTechAdminPortal'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_531089B6DBE7492AA1C2A987AD527317 }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
           package: .
