@@ -1,0 +1,6 @@
+{
+	"name" : "amin-portal-web-app/amin-portal-web-app",
+	"require" : {
+		"monolog/monolog" : "2.8.0"
+	}
+}
