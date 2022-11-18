@@ -1,6 +1,6 @@
 <?php
-
-namespace App\Services\Utility;
+require_once_DIR. '/vendor/autoload.php';
+//namespace App\Services\Utility;
 
 use Monolog\Logger;
 use Monolog\Handler\LogglyHandler;
