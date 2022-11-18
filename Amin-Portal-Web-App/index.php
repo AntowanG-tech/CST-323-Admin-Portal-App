@@ -1,49 +1,23 @@
 <?php
 require_once_DIR. '/vendor/autoload.php';
-//namespace App\Services\Utility;
+use Mongolog\Level1;
+use Mongolog\Logger;
+use Monolog\Handler\StreamHandler;
 
-use Monolog\Logger;
-use Monolog\Handler\LogglyHandler;
+//create a log channel
+$log = new \Monolog\Logger('Lunaris_Admin');
+$log->pushHandler(new StreamHandler('C:/home/LogFiles/log.txt', Level::Warning));
 
-class MyLogger3 implements ILogger {
-    
-    private static $logger = null;
-    
-    static function getLogger() {
-        
-        if (self::$logger == null) {
-            
-            //log to standard out
-            self::$logger = new Logger('playlaravel');
-            self::$logger->pushHandler(new StreamHandler('php://stdout', Logger::DEBUG));
-        }
-        return self::$logger;
-    }
-    
-    public static function debug($message, $data=array()) {
-        
-        self::getLogger()->addDebug($message, $data);
-    }
-    
-    public static function info($message, $data=array()) {
-        
-        self::getLogger()->addInfo($message, $data);
-    }
-    
-    public static function warning($message, $data=array()) {
-        
-        self::getLogger()->addWarning($message, $data);
-    }
-    
-    public static function error($message, $data=array()) {
-        
-        self::getLogger()->addError($message, $data);
-    }
-}
-
+//start the session and add the record to the log
 session_start();
 if($_SESSION["loggedin"] != true){
     header("location: login.php");
+    $log->error('login was unsuccessful');
+}
+
+//add record to the log
+if ($_SESSION["loggedin"] = true){
+   $log->info('Successful Login');
 }
 ?>
 
