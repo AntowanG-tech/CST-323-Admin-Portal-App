@@ -5,7 +5,7 @@ use Mongolog\Logger;
 use Monolog\Handler\StreamHandler;
 
 //create a log channel
-$log = new \Monolog\Logger('Lunaris_Admin');
+$log = new Logger('Lunaris_Admin');
 $log->pushHandler(new StreamHandler('C:/home/LogFiles/log.txt', Logger::DEBUG));
 
 //start the session and add the record to the log
