@@ -1,5 +1,5 @@
 <?php
-require_once_DIR. '/vendor/autoload.php';
+//require_once_DIR. '/vendor/autoload.php';
 use Mongolog\Level1;
 use Mongolog\Logger;
 use Monolog\Handler\StreamHandler;
