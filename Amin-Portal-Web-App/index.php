@@ -2,7 +2,7 @@
 
 date_default_timezone_set('America/Phoenix');
 
-require _DIR_ . '/vendor/autoload.php';
+//require _DIR_ . '/vendor/autoload.php';
 use Monolog\Level1;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
