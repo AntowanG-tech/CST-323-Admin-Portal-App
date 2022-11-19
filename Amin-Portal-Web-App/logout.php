@@ -9,4 +9,4 @@ if (ini_get("session.use_cookies")) {
 //destroy the seesion!
 session_destroy();
 ?>
-<a href="index.php">Return to main page</a>
+<a href="login.php">Go to Login</a>
