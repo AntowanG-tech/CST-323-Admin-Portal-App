@@ -1,44 +1,15 @@
 <?php
-namespace App\Services\Utility;
+date_default_timezone_set('America/Phoenix');
 
+
+require_once (dirname(_FILE_) . '/vendor/autoload.php');
+use Monolog\Level1;
 use Monolog\Logger;
-use Monolog\Handler\LogglyHandler;
+use Monolog\Handler\StreamHandler;
 
-class MyLogger3 implements ILogger {
-    
-    private static $logger = null;
-    
-    static function getLogger() {
-        
-        if (self::$logger == null) {
-            
-            //log to standard out
-            self::$logger = new Logger('playlaravel');
-            self::$logger->pushHandler(new StreamHandler('php://stdout', Logger::DEBUG));
-        }
-        return self::$logger;
-    }
-    
-    public static function debug($message, $data=array()) {
-        
-        self::getLogger()->addDebug($message, $data);
-    }
-    
-    public static function info($message, $data=array()) {
-        
-        self::getLogger()->addInfo($message, $data);
-    }
-    
-    public static function warning($message, $data=array()) {
-        
-        self::getLogger()->addWarning($message, $data);
-    }
-    
-    public static function error($message, $data=array()) {
-        
-        self::getLogger()->addError($message, $data);
-    }
-}
+//create a log channel
+$log = new Logger('Lunaris_Admin');
+$log->pushHandler(new StreamHandler(_DIR_ . '/LunarisTechAdmin.log', Logger::DEBUG));
 
 // Include config file
 require_once "db_connect.php";
