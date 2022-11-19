@@ -16,7 +16,7 @@ $log->pushHandler(new StreamHandler(_DIR_ . '/LunarisTechAdmin.log', Logger::DEB
 session_start();
 if($_SESSION["loggedin"] != true){
     header("location: login.php");
-    $log->error('login was unsuccessful');
+    $log->error('user was not logged in');
 }
 
 //add record to the log

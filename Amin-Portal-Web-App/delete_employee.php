@@ -1,49 +1,11 @@
 <?php
-namespace App\Services\Utility;
 
-use Monolog\Logger;
-use Monolog\Handler\LogglyHandler;
-
-class MyLogger3 implements ILogger {
-    
-    private static $logger = null;
-    
-    static function getLogger() {
-        
-        if (self::$logger == null) {
-            
-            //log to standard out
-            self::$logger = new Logger('playlaravel');
-            self::$logger->pushHandler(new StreamHandler('php://stdout', Logger::DEBUG));
-        }
-        return self::$logger;
-    }
-    
-    public static function debug($message, $data=array()) {
-        
-        self::getLogger()->addDebug($message, $data);
-    }
-    
-    public static function info($message, $data=array()) {
-        
-        self::getLogger()->addInfo($message, $data);
-    }
-    
-    public static function warning($message, $data=array()) {
-        
-        self::getLogger()->addWarning($message, $data);
-    }
-    
-    public static function error($message, $data=array()) {
-        
-        self::getLogger()->addError($message, $data);
-    }
-}
 
 session_start();
 
 if (! $_SESSION["loggedin"]) {
     echo "Only logged in users may access this page. Click <a href='login.php'here</a> to login<br>";
+    $log->error('user not logged in');
     exit;
 }
 
@@ -67,10 +29,12 @@ if(isset($_GET["id"]) && !empty($_GET["id"])){
             // Records deleted successfully. Redirect to landing page
            header("location: index.php");
             printf("Error: %s.\n" , $param_employee_id);
+            $log->info('employee was created');
             exit();
         } else{
             printf("Error: %s.\n", $stmt->error);
             echo "Oops! Something went wrong. Please try again later.";
+            $log->error('failed to delete the selected employee');
         } 
  
     

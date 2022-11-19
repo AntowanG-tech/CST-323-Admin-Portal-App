@@ -8,5 +8,6 @@ if (ini_get("session.use_cookies")) {
 }
 //destroy the seesion!
 session_destroy();
+$log->info('the session was destroyed.');
 ?>
 <a href="login.php">Go to Login</a>
