@@ -2,14 +2,15 @@
 
 date_default_timezone_set('America/Phoenix');
 
-require _DIR_ . '\vendor\autoload.php';
+
+require _DIR_ . '/vendor/autoload.php';
 use Monolog\Level1;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
 //create a log channel
 $log = new Logger('Lunaris_Admin');
-$log->pushHandler(new StreamHandler('C:\home\LogFiles\log.txt', Logger::DEBUG));
+$log->pushHandler(new StreamHandler('_DIR_ . '/LunarisTechAdmin.log, Logger::DEBUG));
 
 //start the session and add the record to the log
 session_start();
